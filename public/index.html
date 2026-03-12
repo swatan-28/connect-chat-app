@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Connect — Real-Time Chat</title>
+
+<link rel="icon" href="./img/favicon.png">
+<link rel="stylesheet" href="./css/styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="join-page">
+
+    <div class="join-container">
+
+        <div class="join-left">
+
+            <div class="app-brand">
+
+                <div class="logo-circle">
+                    <i class="fas fa-comments"></i>
+                </div>
+
+                <h1>Connect</h1>
+
+                <p class="tagline">
+                    Simple. Fast. Real-time conversations.
+                </p>
+
+            </div>
+
+            <div class="feature-list">
+
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant real-time messaging</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <span>Multiple chat rooms</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Safe chat with profanity filter</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="join-right">
+
+            <div class="form-card">
+
+                <h2>Join a Chat Room</h2>
+
+                <form action="./chat.html" id="join-form">
+
+                    <div class="input-group">
+
+                        <label>
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+
+                        <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter your username"
+                        autocomplete="off"
+                        required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            <i class="fas fa-door-open"></i>
+                            Room
+                        </label>
+
+                        <input
+                        type="text"
+                        name="room"
+                        id="room"
+                        placeholder="Enter room name"
+                        autocomplete="off"
+                        required>
+
+                    </div>
+
+
+                    <button type="submit" id="join-btn">
+
+                        <i class="fas fa-arrow-right"></i>
+                        Join Chat
+
+                    </button>
+
+                </form>
+
+                <p class="footer-note">
+                    Built with Node.js & Socket.IO
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const form = document.getElementById("join-form")
+const btn = document.getElementById("join-btn")
+
+form.addEventListener("submit",(e)=>{
+
+const username = document.getElementById("username").value.trim()
+const room = document.getElementById("room").value.trim()
+
+if(!username || !room){
+
+e.preventDefault()
+
+btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Fill all fields'
+
+setTimeout(()=>{
+btn.innerHTML = '<i class="fas fa-arrow-right"></i> Join Chat'
+},2000)
+
+return
+
+}
+
+btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Joining...'
+btn.disabled = true
+
+})
+
+</script>
+
+</body>
+
+</html>
